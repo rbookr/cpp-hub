@@ -1,0 +1,5 @@
+clang++
+-std=c++2a
+-fcoroutines-ts
+-stdlib=libc++
+-std=c++20

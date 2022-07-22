@@ -1,0 +1,7 @@
+[
+    {
+        "directory": "build",
+        "command": "g++  -fcoroutines -std=c++20 example1.cpp -o main",
+        "file": "example1.cpp"
+    }
+]
