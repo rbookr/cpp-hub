@@ -7,5 +7,4 @@
 3.  为view定义begin()和end()函数；
 4.  为view定义adaptor。
 
-https://zhuanlan.zhihu.com/p/133517420[为gcc10的ranges写自定义view - 知乎](https://zhuanlan.zhihu.com/p/133517420)
 [为gcc10的ranges写自定义view - 知乎](https://zhuanlan.zhihu.com/p/133517420)

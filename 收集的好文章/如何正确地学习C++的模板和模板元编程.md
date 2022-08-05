@@ -11,6 +11,7 @@ C++模板元编程，通常来说是指利用模板控制编译器产生临时�
 
 使用C++模板元编程编写的程序我们可以称之为模板元程序，最简单的模板元程序我们可以写成这样：
 
+```cpp
 #include <iostream>
 #include <type_traits>
 int main() {
@@ -19,17 +20,23 @@ int main() {
             << std::is_same<mytype, int>::value << std::endl;
   return 0;
 }
-在上面的代码中std::is_same<mytype, int>::value是典型的模板元程序代码，编译器会在编译期对这句代码进行计算，最终产生以下临时代码：
+```
 
+在上面的代码中`std::is_same<mytype, int>::value`是典型的模板元程序代码，编译器会在编译期对这句代码进行计算，最终产生以下临时代码：
+
+```cpp
 std::cout << "std::is_same<mytype, int>::value = "
             << 1 << std::endl;
-进一步可以看出，由于std::is_same<mytype, int>::value在编译期已经得出结果，所以它并不会对程序的运行产生任何副作用。
+```
+
+进一步可以看出，由于`std::is_same<mytype, int>::value`在编译期已经得出结果，所以它并不会对程序的运行产生任何副作用。
 
 解释到这里，我想读者应该对C++模板元编程和模板元程序有了一个大概的理解。实际上，在我刚刚接触到模板元程序的时候，最疑惑的问题就是它为什么叫做元程序（metaprogram）。经过一番研究后发现，meta起源于希腊语，有after和beyond的含义，作为前缀通常用于表达更高抽象水平的描述。比如在解释数据库元数据（MetaData）时，我们说它是定义数据的数据。而联想到元程序，同样也可以理解为定义程序的程序。熟悉编写编译器的读者应该会接触到flex和bison（或者lex和yacc）。它们是一对词法和语法的解析器生成器，我们可以通过定义词法和语法规则让它们生成出相当完善的词法和语法的解析器源代码，所以flex和bison就是一对最典型的元程序。
 
 最早的C++模板元程序
 1994年Erwin Unruh在C++委员会上提交了下面这份代码：
 
+```cpp
 // Prime number computation by Erwin Unruh
 template <int i> struct D { D(void*); operator int(); };
 
@@ -52,41 +59,44 @@ struct Prime_print<2> { enum {prim = 1}; void f() { D<2> d = prim; } };
 main () {
     Prime_print<LAST> a;
     }
+```
 从类模板命名上看，它似乎是一份打印质数的代码。但是请注意，这份代码在现在看来并不符合当前C++的语法规范，所以是无法通过编译的。实际上，当时Erwin Unruh使用的是一款叫做Metaware Compiler的编译器编译的上述代码，虽然仍然无法通过编译，但是却能输出一些有趣的信息：
 
-MetaWare High C/C++ Compiler R2.6
-(c) Copyright 1987-94, MetaWare Incorporated
-E "primes.cpp",L16/C63(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<2>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<3>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<5>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<7>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<11>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<13>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<17>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<19>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<23>´ ("primes.cpp",L2/C25).
--- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
-E "primes.cpp",L11/C25(#416):   prim
-|    Type `enum{}´ can´t be converted to txpe `D<29>´ ("primes.cpp",L2/C25).
+    MetaWare High C/C++ Compiler R2.6
+    (c) Copyright 1987-94, MetaWare Incorporated
+    E "primes.cpp",L16/C63(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<2>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<3>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<5>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<7>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<11>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<13>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<17>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<19>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<23>´ ("primes.cpp",L2/C25).
+    -- Detected during instantiation of Prime_print<30> at "primes.cpp",L21/C5:
+    E "primes.cpp",L11/C25(#416):   prim
+    |    Type `enum{}´ can´t be converted to txpe `D<29>´ ("primes.cpp",L2/C25).
+
 观察上面这份编译器输出的错误信息，我们发现每条错误信息都给出了一个质数，例如D<2>、D<3>、D<4>等等，这说明编译器在编译阶段已经开始了对模板的计算。在1994年之后，Erwin Unruh发现上述代码已经不能被新语法所支持，所以在2002年发布了新代码：
 
+```cpp
 // Prime number computation by Erwin Unruh
 
 template <int i> struct D { D(void*); operator int(); };
@@ -117,25 +127,29 @@ main() {
  Prime_print<LAST> a;
  a.f();
 }
+```
 这份代码可以用较老版本的GCC编译，比如GCC 4.1，同样的它会让编译器计算并打印出关于质数的错误信息（由于错误信息过多影响阅读，所以这里省略了无用部分，想看完整错误信息的读者可以自己尝试编译上述代码。）：
 
-<source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 17]'
-...
-<source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 13]'
-...
-<source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 11]'
-...
-<source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 7]'
-...
-<source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 5]'
-...
-<source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 3]'
-...
-<source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 2]'
+    <source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 17]'
+    ...
+    <source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 13]'
+    ...
+    <source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 11]'
+    ...
+    <source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 7]'
+    ...
+    <source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 5]'
+    ...
+    <source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 3]'
+    ...
+    <source>:12: error:   initializing argument 1 of 'D<i>::D(void*) [with int i = 2]'
+
 虽然这份代码可以使用GCC编译，不过有些遗憾的是，它依然无法编译成功。为了弥补这个缺憾，我再次对这份代码进行了修改，修改的目的有两个：
 
 使用现代C++语法；
 消除错误信息，让代码能够顺利的编译。
+
+```cpp
 template <int... args>
 struct prime_values {
   static const int size = sizeof...(args);
@@ -199,15 +213,17 @@ int main() {
   get_prime_list_t<LAST> x;
   PRINT_VALUE_TYPE(x);
 }
+```
 对于不熟悉模板元编程的读者来说，上面的代码可能不是很好理解。不过没关系，后面会详细介绍模板元编程的细节。现在我只是想让读者看到模板元编程的强大和有趣之处。
 
 使用支持C++17标准的GCC可以成功编译以上代码并且输出以下警告信息：
 
-test.cpp: In instantiation of 'struct DbgPrintType<prime_values<17, 13, 11, 7, 5, 3, 2> >':
-test.cpp:62:3:   required from here
-test.cpp:53:24: warning: comparison of integer expressions of different signedness: 'long long unsigned int' and 'int' [-Wsign-compare]
-   53 |   enum { n = sizeof(T) > -1 };
-      |              ~~~~~~~~~~^~~~
+    test.cpp: In instantiation of 'struct DbgPrintType<prime_values<17, 13, 11, 7, 5, 3, 2> >':
+    test.cpp:62:3:   required from here
+    test.cpp:53:24: warning: comparison of integer expressions of different signedness: 'long long unsigned int' and 'int' [-Wsign-compare]
+    53 |   enum { n = sizeof(T) > -1 };
+       |              ~~~~~~~~~~^~~~
+
 在这些警告信息中，我们可以清晰的看到一组倒序的质数序列17, 13, 11, 7, 5, 3, 2。值得注意的是，这条警告是我有意而为之的，目的是为了让编译器打印出质数序列。
 
 事实上，从语法角度来说模板元编程是图灵完备（Turing Complete）的，也就是说理论上能够解决所有可计算的问题。不过有些遗憾的是，从编译器的角度来说模板元编程是图灵不完备的，因为作为循环的实现方法，递归在编译器中是有明确的深度限制的。

@@ -1,6 +1,6 @@
 使用之前必须要复制一份
 
-```c++
+```cpp
 auto sp = std::make_shared<int>(42);
 auto wp = sp;
 gw = sp;

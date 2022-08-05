@@ -1,7 +1,7 @@
 
 [Lambda 表达式 (C++11 起) - cppreference.com](https://zh.cppreference.com/w/cpp/language/lambda)
 
-```c++
+```cpp
 #include <iostream>
 using namespace std;
 int main(){

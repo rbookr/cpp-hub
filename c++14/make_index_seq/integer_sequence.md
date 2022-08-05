@@ -3,7 +3,7 @@ c++14加入的一个类模板
 作用: 产生一个compile-time的一个整数序列,它作为一个类,作为 模板函数的的参数的时候,模板参数包可以be deduced(被推断)出来各个整数是什么,进而被使用
 
 可能实现代码
-```c++
+```cpp
 template<typename T,T... ints>
 struct integer_sequence {
     using value_type = T;
@@ -13,7 +13,7 @@ struct integer_sequence {
 };
 ```
 
-```c++
+```cpp
 <%- include("2.cpp") %>
 ```
 ## 辅助模板(Helper templates)
@@ -40,6 +40,6 @@ template<typename Tp,Tp... _Num>
 using make_integer_sequence = integer_sequence<_Tp, __integer_pack(_Num)...>;
 ```
 
-```c++
+```cpp
 <%- include("3.cpp") %>
 ```

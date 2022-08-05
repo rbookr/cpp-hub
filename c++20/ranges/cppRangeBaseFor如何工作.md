@@ -2,13 +2,13 @@
 - [ranges for C++20简介 - 知乎](https://zhuanlan.zhihu.com/p/86809598)
 - [为gcc10的ranges写自定义view - 知乎](https://zhuanlan.zhihu.com/p/133517420)
 
-```c++
+```cpp
 for( range decl : range_expression){
     //loop
 }
 ```
 =>
-```c++
+```cpp
 util c++14
 { //整个实现被 {}包含 range_expression 的生命
     auto && range = range_expression;
@@ -20,7 +20,7 @@ util c++14
 }
 ```
 
-```c++
+```cpp
 c++17
 {
     auto && range = range_expression;
