@@ -32,3 +32,6 @@
 *.app
 
 build/
+dist/
+*-lock.yaml
+node_modules/
