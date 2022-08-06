@@ -1,1 +1,1 @@
-- [c++11](../cpp11/index.md)
+- [c++11](cpp11/index.md)
