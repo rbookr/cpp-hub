@@ -1,7 +1,4 @@
 //markdown-it plugin
-import mathjax3 from 'markdown-it-mathjax3';
-import markdownEjs from './markdown-plugin/ejs'
-import extend_fence from './markdown-plugin/extend_fenc'
 import sidebar from '../siderbar'
 
 //import anchor from 'markdown-it-anchor'
@@ -43,12 +40,7 @@ export default {
     //},
 
     // options for markdown-it-toc-done-right
-    toc: { level: [1, 2,3] },
-    config: (md) => {
-      md.use(markdownEjs);
-      md.use(extend_fence);
-      md.use(mathjax3);
-    }
+    toc: { level: [1, 2,3] }
   },
 
 
