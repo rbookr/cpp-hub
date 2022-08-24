@@ -1,0 +1,37 @@
+ how understand the mean of "named requirements"?
+https://en.cppreference.com/w/cpp/iterator/iterator_traits
+https://en.cppreference.com/w/cpp/iterator/iterator_tags
+https://en.cppreference.com/w/cpp/named_req/Iterator
+https://stackoverflow.com/questions/35247177/c-input-iterator
+1. LegacyIterator
+===
+
+requirements
+
+- CopyConstrcutible
+- CopyAssignable
+- Destrutible
+- swapable
+- has member typedefs 
+	- `value_type`
+	- diffrence_type
+	- reference
+	- pointer
+	- iterator_category
+- operator
+ - `*r`
+ - `++r -> It&`
+
+2. LegacyInputIterator
+
+guarntee validity for single pass algoritms
+
+requirements
+
+- satisfy LegacyIterator
+- EqualityComaparable
+
+https://www.geeksforgeeks.org/input-iterators-in-cpp/
+sample-code
+
+//https://en.cppreference.com/w/cpp/named_req/InputIterator

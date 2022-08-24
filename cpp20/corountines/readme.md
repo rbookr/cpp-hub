@@ -107,9 +107,33 @@ co_await promise.yield_value(expr)
 
 ### 2. get awaiter
 
+1. the awaiter is `operator co_await()`
+2. 自己本身
+
 ### 3. call `awaiter.await_ready()`
 
+1. 调用 `awaiter.await_ready()`
+2. 根据结果来决定是否暂停
+3. `false`
+  - 暂停协程
+  - 调用`awaiter.await_suspend(handle)`
+    - 如果`await_suspend`返回`void`,此协程保持暂停,返回控制给调用方
+    - 如果`await_suspend`返回`bool`,
+      - 值为`true`,此协程保持暂停,返回控制给调用方
+      - 值为`false`,恢复此协程
+    - 如果`await_suspend`返回其它协程`other_hanle`,调用`other_hanle.resume()`,恢复该协程（注意这可以连锁进行，并最终导致当前协程恢复）
+    - 如果 `await_suspend` 抛出异常，那么捕捉该异常，恢复协程，并立即重抛异常
+  - 最后，调用 `awaiter.await_resume()`，它的结果就是整个 `co_await expr` 表达式的结果
+
 ### 4. call `awaiter.await_resume()`
+
+一个疑问,协程A调用协程B,如果B暂停,那么A暂停,否则A不暂停,怎么实现呢?
+
+A        ->        B
+handle A -> handle B
+
+co_await function B()  -> bool
+
 
 
 
