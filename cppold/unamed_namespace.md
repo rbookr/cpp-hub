@@ -15,4 +15,4 @@ using namespace ___very_unique___;
 ```
 
 
-具体的例去看: 
+具体的例去看: https://github.com/rbookr/cpp-hub/tree/master/cppold/code/unamed_namespace
