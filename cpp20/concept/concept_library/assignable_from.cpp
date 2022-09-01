@@ -29,5 +29,19 @@ int main(){
         << std::endl;
     std::cout << '\n' ;
 
+    std::cout << 
+        " std::assignable_from<int,double> "
+        << std::assignable_from<int,double>
+        << std::endl;
+
+    std::cout << 
+        " std::assignable_from<double,int> "
+        << std::assignable_from<double,int>
+        << std::endl;
+
+    std::cout << 
+        " std::assignable_from<int,int> "
+        std::assignable_from<int,int>
+        << std::endl;
     return 0;
 }
