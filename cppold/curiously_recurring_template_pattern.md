@@ -7,7 +7,8 @@
 
 
 ```cpp
-<%- include(./code/crtp.cpp) _%>
+<%- include("code/crtp.cpp") _%>
+include
 ```
 
 ## what is CRTP
