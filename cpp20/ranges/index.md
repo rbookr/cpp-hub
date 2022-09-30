@@ -37,6 +37,8 @@ the particel of ranges:
 
 [view的代码 samples](https://github.com/rbookr/cpp-hub/tree/master/cpp20/ranges/code)
 
+[我写的ranges简单实现:myRanges](https://github.com/rainboy-learn/myRanges/tree/new)
+
 下面与LegacyItertor有着差不多的定义
 p
 std::ranges::input_range
@@ -45,6 +47,26 @@ std::ranges::forward_range
 std::ranges::bidirectional_range
 std::ranges::random_access_range
 std::ranges::cotiguoous_range
+
+## gcc 12 下的 Range_adaptor_closure_objects
+
+Range_adaptor_closure_objects是把各个view用`|` 组合起的一个闭包类,但是`gcc10,gcc12`的实现并不一样,
+
+甚至标准有规定它是如何实现的?给我拓展range库带来了麻烦
+
+cppreference上说它接受一个`view`并返回一个view
+
+```plaintext
+C(R)
+R | C
+R | C | D // (R|C) |D
+R | (C | D)
+
+```
+
+[](https://en.cppreference.com/w/cpp/ranges#Range_adaptor_closure_objects)
+
+## 参考
 
 - [c++ code samples before and after Ranges](https://mariusbancila.ro/blog/2019/01/20/cpp-code-samples-before-and-after-ranges/)
 - [C++20中的Ranges库 | Marvin's Blog【程式人生】](https://marvinsblog.net/post/2020-11-30-cpp-20-ranges/)

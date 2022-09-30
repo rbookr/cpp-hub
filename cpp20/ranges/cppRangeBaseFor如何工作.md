@@ -35,7 +35,6 @@ c++17
 
 ## 视频教程 youtube cppcon
 
-
 ranges will return a ranges::dangling object
 
 - [C++20 Ranges in Practice - Tristan Brindle - CppCon 2020 - YouTube](https://www.youtube.com/watch?v=d_E-VLyUnzc)
