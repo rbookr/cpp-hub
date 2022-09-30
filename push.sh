@@ -7,3 +7,4 @@ git remote add origin git@github.com:rbookr/cpp-hub.git
 git add .
 git commit -m "gitpage"
 git push origin master:gh-pages -f
+ssh jifang_server2 "~/scripts/update_cpphub.sh"
