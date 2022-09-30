@@ -1,0 +1,1 @@
+import{_ as e,b as t,a as r,J as u}from"./chunks/framework.218694e7.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"cpp11/future/1.md"}'),i={name:"cpp11/future/1.md"},a=u("",4),l=[a];function s(o,p,d,_,f,n){return r(),t("div",null,l)}var h=e(i,[["render",s]]);export{m as __pageData,h as default};

@@ -1,0 +1,1 @@
+import{_ as e,b as t,a}from"./chunks/framework.218694e7.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"template/SFINAE.md"}'),r={name:"template/SFINAE.md"};function o(s,n,c,p,_,m){return a(),t("div")}var l=e(r,[["render",o]]);export{i as __pageData,l as default};

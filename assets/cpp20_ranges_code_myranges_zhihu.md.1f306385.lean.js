@@ -1,0 +1,1 @@
+import{_ as s,b as n,a,J as e}from"./chunks/framework.218694e7.js";const A=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"cpp20/ranges/code/myranges/zhihu.md"}'),p={name:"cpp20/ranges/code/myranges/zhihu.md"},l=e("",19),c=[l];function o(r,t,i,u,b,d){return a(),n("div",null,c)}var _=s(p,[["render",o]]);export{A as __pageData,_ as default};

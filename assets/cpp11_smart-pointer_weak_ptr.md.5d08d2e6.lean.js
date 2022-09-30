@@ -1,0 +1,1 @@
+import{_ as s,b as a,a as n,J as p}from"./chunks/framework.218694e7.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"cpp11/smart-pointer/weak_ptr.md"}'),e={name:"cpp11/smart-pointer/weak_ptr.md"},l=p("",3),o=[l];function t(r,c,i,_,D,F){return n(),a("div",null,o)}var A=s(e,[["render",t]]);export{d as __pageData,A as default};
