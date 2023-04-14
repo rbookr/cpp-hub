@@ -5,8 +5,9 @@
 
 我把代码下载到了这里: 
 
-<toGitLink file="./" type="tree" branch="master" />
+<toGitLink file="./code-examples" type="tree" branch="master" />
 
 笔记如下
 
 - [introduce to functional programming](./1.md)
+

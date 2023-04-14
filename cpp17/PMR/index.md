@@ -13,6 +13,37 @@ cpp17 complete guide episode 27 PMR
 
 ## 1. use PMR
 
+PMR由下面几个部分组成
+
+
+- `std::pmr::polymorphic_allocator<T>`, 内存申请器
+- `std::pmr::memory_resource`,一个虚基础类,作用提供操作的模板
+  子类需要实现 `do_allocate`,`do_deallocate`,`do_is_equal`这三个功能,
+
+下面是`c++`提供的几个基础的申请器
+
+- `new_delete_resource`,使用`new,delete`操作符号的内存资源管理器
+- `monotonic_buffer_resource`,静态资源
+- `null_memory_resource`,不申请内存的管理器
+
+
+使用方式
+
+```plaintext
+char buff[100];//定义一个buff数组
+//使用buffer 定义一个静态资源管理器
+std::pmr::monotonic_buffer_resource mbr(buff,100);
+
+//申请器得到 静态资源管理器 的地址
+std::pmr::polymorphic_allocator<int> myalloc( &mbr);
+
+int * alloc_10_int myalloc.allocate(10); //申请10个内存的地址
+// use.
+for(int i = 0 ;i<9;i++)
+  alloc_10_int[i] = i+1;
+myalloc.deallocate(alloc_10_int); //释放
+```
+
 ### Standard Memory Resource
 
 - new_delete_resource()
@@ -95,6 +126,9 @@ struct {
 ```
 
 ## 2. Define Custom Memory Resource Support Custom type
+
+定义一个定制的 内存资源器,支持一般类型
+
 ## 3. Providing memory resource support for custom types
 
 1. define allocator_type as public member defined as polymorphic allocator

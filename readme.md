@@ -2,6 +2,10 @@
 
 [目录](./index.md)
 
+## 如果处理sideMenu
+
+看`./siderbar.js`
+
 
 ## 收集的C++ 有意思的项目
 

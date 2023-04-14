@@ -62,6 +62,11 @@ export default {
       text: 'Edit this page on GitHub'
     },
 
+    toGitLink: {
+      pattern: 'https://github.com/rbookr/cpp-hub/:type/master/:path',
+      text: 'GitHub上打开:'
+    },
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/rbookr/cpp-hub' }
     ],

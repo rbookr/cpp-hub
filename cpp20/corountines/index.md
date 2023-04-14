@@ -297,6 +297,18 @@ handle A -> handle B
 co_await function B()  -> bool
 ```
 
+## 我写的代码
+
+### 最基础的协程
+
+一个最基础的协程,可以暂停,启动.通过这个代码了解协程的结构
+
+```cpp
+<%- include("mycode/base1.cpp") _%>
+```
+
+- `co_await`的使用 <toGitLink file="mycode/base2.cpp" />
+
 ## 参考
 
 - 很好的视频教程 [C++ 20 的协程其实就是一首歌？-哔哩哔哩](https://b23.tv/wyaKYsL)
