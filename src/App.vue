@@ -21,8 +21,8 @@ const deal_link_click = (src:string)=>{
         <treeMenuWrapper :menuArray="cppMenu.child" @linkClick="deal_link_click"></treeMenuWrapper>
     </div>
     <div id="right-body" class="bg-red-100 w-full">
-      <div class="main-body">
-        <div v-html="raw_html"></div>
+      <div class="main-body flex justify-center">
+        <div v-html="raw_html" id="write"></div>
       </div>
     </div>
   </div>

@@ -26,6 +26,17 @@ export const cppMenu : MenuInter = {
                     src:'refercence_wrappers/index.md',
                 }
             ]
+        },
+        {
+            title:'cpp20',
+            src:'cpp20',
+            child: [
+                {
+                    title:"range",
+                    src:'ranges/index.md'
+                }
+            ]
+
         }
     ]
 }
