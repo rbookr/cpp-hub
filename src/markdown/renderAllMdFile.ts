@@ -12,8 +12,12 @@ import {MenuInter,cppMenu} from '../menu'
 
 import {render_to_html} from './markdown'
 
+export const renderSingleMdFile = (srcMd:string,outDir:string) => {
+    render_to_html(srcMd,join(outDir,srcMd))
+}
+
 //执行这个函数,就会把所有的menu内的文件渲染成对应路径的html
-export default (outDir:string) => {
+export const renderAllMdFile =  (outDir:string) => {
 
     //step 1. flattening menu
     let flattened_mds : string[] = []
@@ -33,7 +37,9 @@ export default (outDir:string) => {
     flattened_mds.forEach( md_path => {
         if( existsSync (md_path) ) {
             // console.log(md_path);
-            render_to_html(md_path,join(outDir,md_path))
+            // render_to_html(md_path,join(outDir,md_path))
+            renderSingleMdFile(md_path,outDir)
+
         }
         else {
             console.error('not exists : ' ,md_path)

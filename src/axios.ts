@@ -104,7 +104,8 @@ interface md_server_return_interface {
     __content:string
 }
 
-export const get_md = (filename:string) : Promise<md_server_return_interface>  => {
+// export const get_md = (filename:string) : Promise<md_server_return_interface>  => {
+export const get_md = (filename:string) : Promise<string>  => {
     if( /.*\.md/.test(filename) )
         filename = md_html_path_convert(filename,outDir)
     return axios_inst({
