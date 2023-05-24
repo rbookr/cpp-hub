@@ -52,7 +52,7 @@ std::ranges::cotiguoous_range
 
 Range_adaptor_closure_objects是把各个view用`|` 组合起的一个闭包类,但是`gcc10,gcc12`的实现并不一样,
 
-甚至标准有规定它是如何实现的?给我拓展range库带来了麻烦
+甚至标准有规定它是如何实现的?给我拓展range库带来了麻烦,最简单的方法就是自己定义一个类,来实现:参考这个[A custom C++20 range view](https://mariusbancila.ro/blog/2020/06/06/a-custom-cpp20-range-view/)
 
 cppreference上说它接受一个`view`并返回一个view
 
@@ -64,7 +64,19 @@ R | (C | D)
 
 ```
 
-[](https://en.cppreference.com/w/cpp/ranges#Range_adaptor_closure_objects)
+[range adaptor closure object](https://en.cppreference.com/w/cpp/ranges#Range_adaptor_closure_objects)
+
+* [C++ named requirements: RangeAdaptorObject (since C++20) - cppreference.com](https://en.cppreference.com/w/cpp/named_req/RangeAdaptorObject)
+* [C++ named requirements: RangeAdaptorClosureObject (since C++20) - cppreference.com](https://en.cppreference.com/w/cpp/named_req/RangeAdaptorClosureObject)
+
+那么我比较关系range adaptor 是如何实现的?
+
+在本文件的 对应的路径下的 `gcc-10.1.0.ranges.hpp`的实现如下
+
+首先定义了`_RangeAdaptor`模板类,它的核心是`operator()`的重载
+
+
+
 
 ## 参考
 

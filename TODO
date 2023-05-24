@@ -1,3 +1,6 @@
 ## book 生成代码
 
-- [ ] 安装tailwindcss
+- ul, heading 的上下间隔有点少,ul的间隔应该与p一样,
+- 得到markdown的toc,使用markdown-it-toc-done-right,这个
+- [ ] 使用flex 圣杯布局,https://csslayout.io/holy-grail/
+- [x] 安装tailwindcss

@@ -1,11 +1,8 @@
-import {title} from "process"
-
 export interface MenuInter {
 
     title:string
     src:string
     child?: MenuInter[]
-
 }
 
 
@@ -34,6 +31,20 @@ export const cppMenu : MenuInter = {
                 {
                     title:"range",
                     src:'ranges/index.md'
+                },
+                {
+                    title:"cocou",
+                    src:'ranges/index.md'
+                }
+            ]
+        },
+        {
+            title:'奇技淫巧',
+            src:'奇技淫巧',
+            child : [
+                {
+                    title:'读写锁',
+                    src:'读写锁/readme.md',
                 }
             ]
 

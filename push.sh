@@ -12,3 +12,8 @@ rsync -avzP --delete \
     --exclude '.git' \
     --exclude 'node_modules/' \
     . openwrt_home:/mnt/sda4/myweb/cpphub
+
+rsync -avzP --delete \
+    --exclude '.git' \
+    --exclude 'node_modules/' \
+    . rbook:~/www/cpphub
